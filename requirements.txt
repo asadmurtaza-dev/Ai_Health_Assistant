@@ -1,0 +1,9 @@
+streamlit
+pandas
+pydeck
+requests
+python-dotenv
+SpeechRecognition
+geocoder
+langchain
+langchain-google-genai
