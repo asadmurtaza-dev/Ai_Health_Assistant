@@ -22,22 +22,6 @@ model = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
     temperature=0.7
 )
-
-# --------------------------
-# Voice input function
-# --------------------------
-def get_voice_input():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.info("Listening... Please speak now.")
-        audio = r.listen(source, timeout=5)
-        try:
-            text = r.recognize_google(audio)
-            return text
-        except:
-            st.error("Could not recognize voice")
-            return ""
-
 # --------------------------
 # Session state for history
 # --------------------------
@@ -47,11 +31,7 @@ if "history" not in st.session_state:
 # --------------------------
 # Symptom input
 # --------------------------
-voice_input_btn = st.button("Use Voice Input")
-if voice_input_btn:
-    symptom = get_voice_input()
-else:
-    symptom = st.text_input("Enter your symptoms:")
+symptom = st.text_input("Enter your symptoms:")
 
 # --------------------------
 # Load doctors CSV
@@ -149,7 +129,7 @@ IMPORTANT:
     # Map view
     # --------------------------
     if not filtered_doctors.empty:
-        st.subheader("Map View (OSM Tiles)")
+        st.subheader("Map View")
         st.pydeck_chart(pdk.Deck(
             initial_view_state=pdk.ViewState(
                 latitude=filtered_doctors["lat"].mean(),
@@ -189,4 +169,5 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
