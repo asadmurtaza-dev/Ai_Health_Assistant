@@ -56,7 +56,7 @@ symptom = st.text_input("Enter your symptoms:")
 # --------------------------
 # Load doctors CSV
 # --------------------------
-doctors_df = pd.read_csv("data/doctors.csv")
+doctors_df = pd.read_csv("doctors.csv")
 
 # --------------------------
 # Expanded CSV specialties + keyword mapping
@@ -192,3 +192,4 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
