@@ -22,6 +22,22 @@ model = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
     temperature=0.7
 )
+
+# --------------------------
+# Voice input function
+# --------------------------
+# def get_voice_input():
+#     r = sr.Recognizer()
+#     with sr.Microphone() as source:
+#         st.info("Listening... Please speak now.")
+#         audio = r.listen(source, timeout=5)
+#         try:
+#             text = r.recognize_google(audio)
+#             return text
+#         except:
+#             st.error("Could not recognize voice")
+#             return ""
+
 # --------------------------
 # Session state for history
 # --------------------------
@@ -30,13 +46,17 @@ if "history" not in st.session_state:
 
 # --------------------------
 # Symptom input
-# --------------------------
+# # --------------------------
+# voice_input_btn = st.button("Use Voice Input")
+# if voice_input_btn:
+#     symptom = get_voice_input()
+# else:
 symptom = st.text_input("Enter your symptoms:")
 
 # --------------------------
 # Load doctors CSV
 # --------------------------
-doctors_df = pd.read_csv("doctors.csv")
+doctors_df = pd.read_csv("data/doctors.csv")
 
 # --------------------------
 # Expanded CSV specialties + keyword mapping
@@ -115,13 +135,16 @@ IMPORTANT:
     # Filter doctors
     # --------------------------
     if mapped_specialties:
-        filtered_doctors = doctors_df[doctors_df["specialty"].isin(mapped_specialties)]
+        filtered_doctors = doctors_df[doctors_df["Specialty"].isin(mapped_specialties)]
     else:
         filtered_doctors = pd.DataFrame()  # empty if no match
 
     st.subheader("Nearby Doctors:")
     if not filtered_doctors.empty:
-        st.table(filtered_doctors[["name", "specialty", "distance"]])
+        st.dataframe(
+         filtered_doctors[["Name", "Specialty", "Distance"]],
+         hide_index=True
+        )
     else:
         st.info("No doctors found for these specialties.")
 
@@ -163,11 +186,9 @@ IMPORTANT:
     # Chat history / AI advice
     # --------------------------
     st.subheader("AI Advice / Preventive Measures 📝")
-    st.text_area("Advice", value=response_text, height=250)
+    st.text_area("Advice", value=response_text, height=350)
 
     st.subheader("Chat History 🗂️")
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
-
-
