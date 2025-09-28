@@ -1,13 +1,13 @@
 # 🏥 AI Health Assistant
 
 An AI-powered health assistant built with **Streamlit** and **Google Gemini API (via LangChain)**.
-It helps users by analyzing their symptoms (via text or voice input), suggesting possible doctor specialties, prevention tips, and showing nearby doctors on an interactive map.
+It helps users by analyzing their symptoms (via text), suggesting possible doctor specialties, prevention tips, and showing nearby doctors on an interactive map.
 
 ---
 
 ## 🚀 Features
 
-* 🗣️ **Symptom Input** via text or voice
+* 🗣️ **Symptom Input** via text
 * 🤖 **AI Suggestions** using Gemini (LangChain wrapper)
 * 🩺 Suggests **relevant doctor specialties**
 * 🛡️ Provides **basic prevention & safety tips**
