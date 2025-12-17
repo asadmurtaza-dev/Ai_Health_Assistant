@@ -19,9 +19,8 @@ st.title("AI Health Assistant 🏥")
 # Initialize Gemini model
 # --------------------------
 model = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash-latest",
+    model="gemini-2.0-flash",
     temperature=0.7,
-    google_api_key=GOOGLE_API_KEY
 )
 # --------------------------
 # Session state for history
@@ -29,13 +28,6 @@ model = ChatGoogleGenerativeAI(
 if "history" not in st.session_state:
     st.session_state.history = []
 
-# --------------------------
-# Symptom input
-# # --------------------------
-# voice_input_btn = st.button("Use Voice Input")
-# if voice_input_btn:
-#     symptom = get_voice_input()
-# else:
 symptom = st.text_input("Enter your symptoms:")
 
 # --------------------------
@@ -177,6 +169,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
