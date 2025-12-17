@@ -13,7 +13,7 @@ load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 st.set_page_config(page_title="AI Health Assistant", page_icon="💊")
-st.title("AI Health Assistant 🏥")
+st.title("AI Health Assistantss 🏥")
 
 # --------------------------
 # Initialize Gemini model
@@ -193,6 +193,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
