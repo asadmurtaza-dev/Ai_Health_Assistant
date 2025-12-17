@@ -13,13 +13,13 @@ load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 st.set_page_config(page_title="AI Health Assistant", page_icon="💊")
-st.title("AI Health Assistantss 🏥")
+st.title("AI Health Assistant 🏥")
 
 # --------------------------
 # Initialize Gemini model
 # --------------------------
 model = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
+    model="gemini-1.5-flash",
     temperature=0.7,
     google_api_key=GOOGLE_API_KEY
 )
@@ -177,6 +177,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
