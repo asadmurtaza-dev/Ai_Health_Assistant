@@ -4,7 +4,7 @@ import pandas as pd
 import pydeck as pdk
 import os
 from dotenv import load_dotenv
-import speech_recognition as sr
+
 
 # --------------------------
 # Load environment variables
@@ -23,22 +23,6 @@ model = ChatGoogleGenerativeAI(
     temperature=0.7,
     google_api_key=GOOGLE_API_KEY
 )
-
-# --------------------------
-# Voice input function
-# --------------------------
-# def get_voice_input():
-#     r = sr.Recognizer()
-#     with sr.Microphone() as source:
-#         st.info("Listening... Please speak now.")
-#         audio = r.listen(source, timeout=5)
-#         try:
-#             text = r.recognize_google(audio)
-#             return text
-#         except:
-#             st.error("Could not recognize voice")
-#             return ""
-
 # --------------------------
 # Session state for history
 # --------------------------
@@ -193,6 +177,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
