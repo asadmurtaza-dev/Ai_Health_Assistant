@@ -19,7 +19,7 @@ st.title("AI Health Assistant 🏥")
 # Initialize Gemini model
 # --------------------------
 model = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
+    model="gemini-2.0-flash",
     temperature=0.7
 )
 
@@ -192,6 +192,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
