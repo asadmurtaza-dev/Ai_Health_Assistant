@@ -10,7 +10,7 @@ import speech_recognition as sr
 # Load environment variables
 # --------------------------
 load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 st.set_page_config(page_title="AI Health Assistant", page_icon="💊")
 st.title("AI Health Assistant 🏥")
@@ -192,5 +192,6 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
