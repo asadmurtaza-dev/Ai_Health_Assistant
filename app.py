@@ -20,7 +20,8 @@ st.title("AI Health Assistant 🏥")
 # --------------------------
 model = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
-    temperature=0.7
+    temperature=0.7,
+    google_api_key=GOOGLE_API_KEY
 )
 
 # --------------------------
@@ -192,6 +193,7 @@ IMPORTANT:
     for i, res in enumerate(st.session_state.history, 1):
         with st.expander(f"Analysis {i}"):
             st.write(res)
+
 
 
 
